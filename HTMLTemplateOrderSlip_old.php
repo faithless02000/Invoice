@@ -174,7 +174,7 @@ class HTMLTemplateOrderSlipCore extends HTMLTemplateInvoice
 			'shipping_tax_breakdown' => $this->getShippingTaxesBreakdown(),
 			'order' => $this->order,
 			'ecotax_tax_breakdown' => $this->order_slip->getEcoTaxTaxesBreakdown(),
-			'is_order_slip' => true
+			'is_order_slip' => true,
 		));
 
 		return $this->smarty->fetch($this->getTemplate('invoice.tax-tab'));
@@ -222,6 +222,8 @@ class HTMLTemplateOrderSlipCore extends HTMLTemplateInvoice
 					$infos['total_price_tax_excl'] += (float)Tools::ps_round($order_slip_details['amount_tax_excl'], 2);
 					$infos['total_amount'] += (float)Tools::ps_round($amount, 2);
 				}
+				$total_product_tax = $infos['total_amount'];
+				$this->smarty->assign(array('total_product_tax' => $total_product_tax));
 				$tmp_tax_infos[(string)number_format($tax_rate, 3)] = $infos;
 			}
 		}

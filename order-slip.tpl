@@ -72,7 +72,7 @@
 		<td style="width: 15%; padding-right: 7px; text-align: right; vertical-align: top; font-size: 7pt;">
 			<!-- CUSTOMER INFORMATIONS -->
 			<b>{l s='Order Number:' pdf='true'}</b><br />
-			{$order->getUniqReference()}<br />
+			{$order->id}<br />
 			<br />
 			<b>{l s='Order Date:' pdf='true'}</b><br />
 			{dateFormat date=$order->date_add full=0}<br />
@@ -195,7 +195,7 @@
 					{else}
 					<tr style="line-height:5px;">
 						<td style="width: 85%; text-align: right; font-weight: bold">{l s='Product Total' pdf='true'}</td>
-						<td style="width: 15%; text-align: right;">- {displayPrice currency=$order->id_currency price=$order->total_products}</td>
+						<td style="width: 15%; text-align: right;">- {displayPrice currency=$order->id_currency price=$order->total_products_wt}</td>
 					</tr>
 					{/if}
 				{/if}
